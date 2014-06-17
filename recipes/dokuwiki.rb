@@ -27,6 +27,7 @@ admindomains.each do |admindomain|
     owner node['modularit-inventory']['dokuwiki']['owner']
     group node['modularit-inventory']['dokuwiki']['group']
   end
+  # List of nodes
   template "#{node['modularit-inventory']['dokuwiki']['data_dir']}/#{admindomain.name}/nodes.txt" do
     source 'nodes.dokuwiki.erb'
     owner node['modularit-inventory']['dokuwiki']['owner']
@@ -48,3 +49,16 @@ admindomains.each do |admindomain|
  
 end
 
+## Reports
+directory "#{node['modularit-inventory']['dokuwiki']['data_dir']}/rasca_reports" do
+  owner node['modularit-inventory']['dokuwiki']['owner']
+  group node['modularit-inventory']['dokuwiki']['group']
+end
+# Backups
+template "#{node['modularit-inventory']['dokuwiki']['data_dir']}/rasca_reports/backup.txt" do
+  source 'report_backup.dokuwiki.erb'
+  owner node['modularit-inventory']['dokuwiki']['owner']
+  group node['modularit-inventory']['dokuwiki']['group']
+  mode 00640
+  variables(:nodes => search(:node, "*:*").sort!{|x, y| x.name <=> y.name})
+end
