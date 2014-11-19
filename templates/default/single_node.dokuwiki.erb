@@ -39,9 +39,33 @@ For manual documentation check [[<%= @n.name %>]]
 ^ System | <%= @n['virtualization']['system'] %> |
 ^ Type | <%= @n['virtualization']['role'] %> |
 <%   if @n['virtualization'].has_key?('guest_list') -%>
-^ Guests | <%= @n['virtualization']['guest_list'].keys.map{ |vm| "[[#{vm}_chef|#{vm}]]"}.join(",") %> |
+<% # Very UGLY hack that assumes a name like admindomain.vmname -%>
+^ Guests | <%= @n['virtualization']['guest_list'].keys.map{ |vm| 
+  prefix=""
+  prefix="#{vm.split(".")[0]}:" if vm.include?(".");
+  "[[#{prefix}#{vm}_chef|#{vm}]]"}.join(", ") %> |
 <%   end -%>
 <% end -%>
+
+<% if @n.has_key?('rasca_status') -%>
+
+===== Rasca =====
+
+^ Alert ^ Status ^ Last Update ^ Last Change ^ Last Message ^
+<% @n['rasca_status'].keys.sort.each do |alarm| 
+    @n['rasca_status'][alarm].keys.each do |entry|
+     next if entry.match(/^Notify/)
+     @last_status=@n['rasca_status'][alarm][entry].has_key?('last_status') ? @n['rasca_status'][alarm][entry]['last_status'] : "Unknown"
+     @last_status="**#{@last_status}**" if @last_status != "OK"
+     @last_change=@n['rasca_status'][alarm][entry].has_key?('status_last_change') ? @n['rasca_status'][alarm][entry]['status_last_change'] : "Unknown"
+     @last_updated=@n['rasca_status'][alarm][entry].has_key?('ctime') ? @n['rasca_status'][alarm][entry]['ctime'] : "Unknown"
+     @last_message=@n['rasca_status'][alarm][entry].has_key?('short') ? @n['rasca_status'][alarm][entry]['short'] : "Unknown"
+-%>
+| <%= alarm %> | <%= @last_status%> | <%= @last_updated%> | <%= @last_change %> | <%= @last_message %> |
+<%  end -%>
+<% end -%>
+
+<% end %>
 
 ===== Network interfaces =====
 
