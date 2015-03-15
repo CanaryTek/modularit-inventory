@@ -41,8 +41,7 @@ For manual documentation check [[<%= @n.name %>]]
 <%   if @n['virtualization'].has_key?('guest_list') -%>
 <% # Very UGLY hack that assumes a name like admindomain.vmname -%>
 ^ Guests | <%= @n['virtualization']['guest_list'].keys.map{ |vm| 
-  prefix=""
-  prefix="#{vm.split(".")[0]}:" if vm.include?(".");
+  prefix=vm.include?(".") ? "#{vm.split(".")[0]}:" : "#{@n['modularit']['admindomain']}.";
   "[[#{prefix}#{vm}_chef|#{vm}]]"}.join(", ") %> |
 <%   end -%>
 <% end -%>
