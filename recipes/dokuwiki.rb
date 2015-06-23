@@ -125,3 +125,20 @@ template "#{node['modularit-inventory']['dokuwiki']['data_dir']}/rasca_reports/s
   variables(:admindomains => search(:role, "admindomain:*").sort!{|x, y| x.name <=> y.name})
 end
 
+##
+## ModularIT Services
+##
+directory "#{node['modularit-inventory']['dokuwiki']['data_dir']}/modularit_services" do
+  owner node['modularit-inventory']['dokuwiki']['owner']
+  group node['modularit-inventory']['dokuwiki']['group']
+end
+
+## Zimbra
+template "#{node['modularit-inventory']['dokuwiki']['data_dir']}/modularit_services/modularit-zimbra.txt" do
+  source 'modularit_zimbra_report.dokuwiki.erb'
+  owner node['modularit-inventory']['dokuwiki']['owner']
+  group node['modularit-inventory']['dokuwiki']['group']
+  mode 00640
+  variables(:nodes => search(:node, "role:modularit-zimbra").sort!{|x, y| x.name <=> y.name})
+end
+
