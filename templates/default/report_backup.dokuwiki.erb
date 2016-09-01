@@ -11,7 +11,7 @@
         @last_status="**#{@last_status}**" if @last_status != "OK"
         @last_change=n['rasca_status']['CheckSafekeep']['CheckSafekeep'].has_key?('status_last_change') ? n['rasca_status']['CheckSafekeep']['CheckSafekeep']['status_last_change'] : "Unknown"
         @last_updated=n['rasca_status']['CheckSafekeep']['CheckSafekeep'].has_key?('ctime') ? n['rasca_status']['CheckSafekeep']['CheckSafekeep']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['CheckSafekeep']['CheckSafekeep'].has_key?('last_message') ? n['rasca_status']['CheckSafekeep']['CheckSafekeep']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['CheckSafekeep']['CheckSafekeep'].has_key?('short') ? n['rasca_status']['CheckSafekeep']['CheckSafekeep']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
@@ -27,7 +27,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['CheckDuplicity']['CheckDuplicity'].has_key?('status_last_change') ? n['rasca_status']['CheckDuplicity']['CheckDuplicity']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['CheckDuplicity']['CheckDuplicity'].has_key?('ctime') ? n['rasca_status']['CheckDuplicity']['CheckDuplicity']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['CheckDuplicity']['CheckDuplicity'].has_key?('last_message') ? n['rasca_status']['CheckDuplicity']['CheckDuplicity']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['CheckDuplicity']['CheckDuplicity'].has_key?('short') ? n['rasca_status']['CheckDuplicity']['CheckDuplicity']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
@@ -42,7 +42,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['CheckBackup']['CheckBackup'].has_key?('status_last_change') ? n['rasca_status']['CheckBackup']['CheckBackup']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['CheckBackup']['CheckBackup'].has_key?('ctime') ? n['rasca_status']['CheckBackup']['CheckBackup']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['CheckBackup']['CheckBackup'].has_key?('last_message') ? n['rasca_status']['CheckBackup']['CheckBackup']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['CheckBackup']['CheckBackup'].has_key?('short') ? n['rasca_status']['CheckBackup']['CheckBackup']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>

@@ -11,7 +11,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['SecPkgChk']['CheckSecPkg'].has_key?('status_last_change') ? n['rasca_status']['SecPkgChk']['CheckSecPkg']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['SecPkgChk']['CheckSecPkg'].has_key?('ctime') ? n['rasca_status']['SecPkgChk']['CheckSecPkg']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['SecPkgChk']['CheckSecPkg'].has_key?('last_message') ? n['rasca_status']['SecPkgChk']['CheckSecPkg']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['SecPkgChk']['CheckSecPkg'].has_key?('short') ? n['rasca_status']['SecPkgChk']['CheckSecPkg']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
@@ -26,7 +26,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['SecPassChk']['CheckSecUsers'].has_key?('status_last_change') ? n['rasca_status']['SecPassChk']['CheckSecUsers']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['SecPassChk']['CheckSecUsers'].has_key?('ctime') ? n['rasca_status']['SecPassChk']['CheckSecUsers']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['SecPassChk']['CheckSecUsers'].has_key?('last_message') ? n['rasca_status']['SecPassChk']['CheckSecUsers']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['SecPassChk']['CheckSecUsers'].has_key?('short') ? n['rasca_status']['SecPassChk']['CheckSecUsers']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
@@ -41,7 +41,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['TWChk']['CheckTripwire'].has_key?('status_last_change') ? n['rasca_status']['TWChk']['CheckTripwire']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['TWChk']['CheckTripwire'].has_key?('ctime') ? n['rasca_status']['TWChk']['CheckTripwire']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['TWChk']['CheckTripwire'].has_key?('last_message') ? n['rasca_status']['TWChk']['CheckTripwire']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['TWChk']['CheckTripwire'].has_key?('short') ? n['rasca_status']['TWChk']['CheckTripwire']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
@@ -56,7 +56,7 @@
       @last_status="**#{@last_status}**" if @last_status != "OK"
       @last_change=n['rasca_status']['GitChk']['CheckGit'].has_key?('status_last_change') ? n['rasca_status']['GitChk']['CheckGit']['status_last_change'] : "Unknown"
       @last_updated=n['rasca_status']['GitChk']['CheckGit'].has_key?('ctime') ? n['rasca_status']['GitChk']['CheckGit']['ctime'] : "Unknown"
-      @last_message=n['rasca_status']['GitChk']['CheckGit'].has_key?('last_message') ? n['rasca_status']['GitChk']['CheckGit']['last_message'] : "Unknown"
+      @last_message=n['rasca_status']['GitChk']['CheckGit'].has_key?('short') ? n['rasca_status']['GitChk']['CheckGit']['short'] : "Unknown"
 -%>
 | <%= n.name %> | <%= @last_status %> | <%= @last_updated %> | <%= @last_change %> | <%= @last_message %> |
 <%  end -%>
